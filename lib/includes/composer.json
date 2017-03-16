@@ -2,8 +2,7 @@
     "name": "PiSwitch/piSwitchServer",
     "type": "project",
     "require": {
-        "slim/slim": "^3.7",
-        "firebase/php-jwt": "^4.0"
+        "slim/slim": "^3.7"
     },
     "autoload": {
         "psr-4": {"piSwitchServer\\": "../.."}
