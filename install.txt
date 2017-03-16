@@ -1,0 +1,4 @@
+Define those environment variables:
+
+piswitch_env   = (dev|stage|prod)
+piswitch_mysql = {"host":"YOUR_HOST", "user":"YOUR_USERNAME", "pass":"YOUR_PASSWORD", "dbname":"YOUR_DB_NAME"} (JSON object)
