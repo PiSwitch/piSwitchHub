@@ -1,8 +1,5 @@
 lib/includes/vendor/*
-lib/includes/composer.json
-lib/includes/composer.lock
 lib/includes/composer.phar
-piSwitch.iml
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
