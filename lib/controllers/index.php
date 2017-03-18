@@ -1,6 +1,6 @@
 <?php
 
-namespace piSwitchServer\lib\controllers;
+namespace piSwitchHub\lib\controllers;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;

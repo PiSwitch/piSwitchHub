@@ -1,6 +1,6 @@
 <?php
 
-namespace piSwitchServer\lib\data;
+namespace piSwitchHub\lib\data;
 
 
 class mysql
