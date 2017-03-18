@@ -1,11 +1,11 @@
 {
-    "name": "PiSwitch/piSwitchServer",
+    "name": "PiSwitch/piSwitchHub",
     "type": "project",
     "require": {
         "slim/slim": "^3.7"
     },
     "autoload": {
-        "psr-4": {"piSwitchServer\\": "../.."}
+        "psr-4": {"piSwitchHub\\": "../.."}
     },
     "authors": [
         {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace piSwitchServer\lib\config;
+namespace piSwitchHub\lib\config;
 
 
 class configManager {

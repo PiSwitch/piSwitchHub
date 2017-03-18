@@ -1,7 +1,7 @@
 <?php
-namespace piSwitchServer\lib;
+namespace piSwitchHub\lib;
 
-use piSwitchServer\lib\config\configManager;
+use piSwitchHub\lib\config\configManager;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
