@@ -4,24 +4,6 @@
     <title>Hello, World</title>
 </head>
 <body>
-    <pre id="messages"></pre>
-    <form>
-        <input id="form" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-        $(function () {
-            var socket = io();
-            $('form').submit(function(){
-                socket.emit('chat message', $('#form').val());
-                $('#form').val('');
-                return false;
-            });
-            socket.on('chat message', function (message) {
-                $('#messages').append(message + '\n');
-            });
-        });
-    </script>
+    <h1>Hello, World!</h1>
 </body>
 </html>
