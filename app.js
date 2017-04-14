@@ -20,6 +20,12 @@ app.use('/', homeRoutes);
 http.listen(config.port, config.hostname, function(){
     var hostname = config.hostname ? config.hostname : '*';
     console.info('listening on ' + hostname + ':' + http.address().port);
-    socketClient.refreshToken();
+    socketClient.connect(function(error) {
+        if(error) {
+            console.log('Could not connect to socket server: ' + error);
+            return;
+        }
+        console.info('Connected to socket server.');
+    });
 });
 
