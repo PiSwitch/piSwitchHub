@@ -1,16 +1,11 @@
 {
     "hostname": "",
     "port": 3001,
-    "masterServerUrl": "http://example.org:3000/",
-    "apiUrl": "http://example.org:3000/api/",
     "mysql": {
         "connectionLimit": 10,
         "host": "example.org",
         "user": "foo",
         "password": "bar",
         "database": "foo_bar"
-    },
-
-    "email": "UserEmail@example.org",
-    "password": "PasswordPlainText"
+    }
 }

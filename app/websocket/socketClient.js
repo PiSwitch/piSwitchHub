@@ -1,10 +1,10 @@
 var token = require('../lib/token');
 var io = require('socket.io-client');
-var config = require('../../config.json');
+var masterServer = require('../models/masterServer');
 
 module.exports = function (app) {
-
-    var client = io(config.masterServerUrl, { autoConnect: false });
+    var masterServerData = masterServer.get();
+    var client = io(masterServerData.serverUrl, { autoConnect: false });
 
     client.on('connect', function () {
         console.info('Connected!');
@@ -25,7 +25,7 @@ module.exports = function (app) {
     };
 
     this.connect = function(callback) {
-        console.info('Attempting to connect to remote socket server...')
+        console.info('Attempting to connect to remote socket server...');
         token.refresh(function(error) {
             if(error) {
                 return callback(error);

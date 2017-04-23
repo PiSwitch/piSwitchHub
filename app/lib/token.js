@@ -1,23 +1,24 @@
 var request = require('request');
-var config = require('../../config.json');
+var masterServer = require('../models/masterServer');
+var exports = {};
+module.exports = exports;
 
 var token = '';
-var exports = {};
 
 exports.get = function() {
     return token;
-}
+};
 
 exports.refresh = function(callback) {
-    //TODO: Save the user email and password somewhere instead of hardcoding in the config file
+    var serverData = masterServer.get();
+
     var formData = {
         form: {
-            email: config.email,
-            password: config.password
+            email: serverData.email,
+            password: serverData.password
         }
     };
-
-    request.post(config.apiUrl + 'authenticate', formData, function (error, httpResponse, body) {
+    request.post(serverData.apiUrl + 'authenticate', formData, function (error, httpResponse, body) {
         if (error) {
             return callback(error);
         }
@@ -30,6 +31,4 @@ exports.refresh = function(callback) {
             return callback('bad credentials');
         }
     });
-}
-
-module.exports = exports;
+};
