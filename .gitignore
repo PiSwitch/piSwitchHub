@@ -1,6 +1,8 @@
 node_modules
 config.json
 masterServerConfig.json
+secrets.json
+sqlConfig.json
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm

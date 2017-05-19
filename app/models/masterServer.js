@@ -13,10 +13,10 @@ function load() {
     }
     else {
         masterServerConfig = {
-            serverUrl: 'http://example.org:3000/',
-            apiUrl: 'http://example.org:3000/api/',
-            email: 'UserEmail@example.org',
-            password: 'PasswordPlainText'
+            serverUrl: '',
+            apiUrl: '',
+            email: '',
+            password: ''
         };
         exports.setConfig(masterServerConfig);
     }
@@ -33,4 +33,9 @@ exports.get = function () {
     }
 
     return masterServerConfig;
+};
+
+exports.isSetup = function () {
+    var config = exports.get();
+    return config.serverUrl && config.apiUrl && config.email && config.password;
 };

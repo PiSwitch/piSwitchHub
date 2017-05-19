@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+    h1 Setup: Step Two
+    h2 Let's connect to a database
+
+    if errors
+        ul(style="background-color: red; color: white")
+            for error in errors
+                li!= error.msg
+
+    form(method='POST', action='')
+        div!=JSON.stringify(config)
+        div
+            label(for='host') Host
+            input#host(name='host', value=(config === undefined ? 'localhost' : config.host))
+        div
+            label(for='user') User
+            input#user(name='user', value=(config === undefined ? '' : config.user))
+        div
+            label(for='password') Password
+            input#password(name='password', type='password')
+        div
+            label(for='database') Database
+            input#database(name='database', value=(config === undefined ? '' : config.database))
+        div
+            label(for='connectionLimit') Max. simultaneous connections
+            input#connectionLimit(name='connectionLimit', type='number', value=(config === undefined ? '10' : config.connectionLimit))
+
+        div
+            button(type='submit') Next step

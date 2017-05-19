@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    h1 Setup: Step One
+    h2 Let's connect to the remote server
+
+    if errors
+        ul(style="background-color: red; color: white")
+            for error in errors
+                li!= error.msg
+
+    form(method='POST', action='')
+        div
+            label(for='serverUrl') Remote Server Address
+            input#serverUrl(name='serverUrl', value=(config === undefined ? 'http://example.org:3000/' : config.serverUrl))
+        div
+            label(for='apiUrl') Remote API Url
+            input#apiUrl(name='apiUrl', value=(config === undefined ? 'http://example.org:3000/api/' : config.apiUrl))
+        div
+            label(for='email') Login Email
+            input#email(name='email', value=(config === undefined ? '' : config.email))
+        div
+            label(for='password') Password
+            input#password(name='password', type='password')
+        div
+            button(type='submit') Next step

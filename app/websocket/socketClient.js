@@ -25,7 +25,7 @@ module.exports = function (app) {
     };
 
     this.connect = function(callback) {
-        console.info('Attempting to connect to remote socket server...');
+        console.info('Attempting to connect to remote socket server at ' + masterServerData.serverUrl + '...');
         token.refresh(function(error) {
             if(error) {
                 return callback(error);

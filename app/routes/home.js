@@ -10,7 +10,7 @@ module.exports = function (app) {
         res.render('index')
     });
     homeRoutes.get('/test_sql', function(req, res){
-        db.query('SELECT * FROM `test` ', function (error, results, fields) {
+        db.getPool().query('SELECT * FROM `test` ', function (error, results, fields) {
             if (error) throw error;
             res.send(results);
         });
