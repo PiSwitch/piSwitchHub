@@ -1,11 +1,25 @@
 var path = require('path');
 var express = require('express');
 var masterServer = require('../models/masterServer');
+var setupMiddleware = require('../middlewares/setupMiddleware');
 var sql = require('../lib/sqlPool');
 
 module.exports = function (app) {
 
     var setupRoutes = express.Router();
+    
+    setupRoutes.get('/enjoy', function(req, res) {
+        if(!masterServer.isSetup()) {
+            return res.redirect('/setup/step_one');
+        }
+        if(!sql.isSetup()) {
+            return res.redirect('/setup/step_two');
+        }
+
+        res.render('setup/enjoy')
+    });
+
+    setupRoutes.use(setupMiddleware.mustNotBeSetup);
 
     setupRoutes.get('/step_one', function(req, res) {
         if(masterServer.isSetup()) {
@@ -72,6 +86,7 @@ module.exports = function (app) {
         req.sanitizeBody('database').trim();
         req.sanitizeBody('connectionLimit').trim();
 
+        req.sanitizeBody('user').escape();
         req.sanitizeBody('password').escape();
         req.sanitizeBody('database').escape();
         req.sanitizeBody('connectionLimit').escape();
@@ -96,15 +111,23 @@ module.exports = function (app) {
         res.redirect('/setup/enjoy');
     });
 
-    setupRoutes.get('/enjoy', function(req, res) {
-        if(!masterServer.isSetup()) {
-            return res.redirect('/setup/step_one');
-        }
-        if(!sql.isSetup()) {
-            return res.redirect('/setup/step_two');
-        }
+    setupRoutes.post('/test_sql', function(req, res) {
+        req.sanitizeBody('host').trim();
+        req.sanitizeBody('user').trim();
+        req.sanitizeBody('password').trim();
+        req.sanitizeBody('database').trim();
 
-        res.render('setup/enjoy')
+        req.sanitizeBody('user').escape();
+        req.sanitizeBody('password').escape();
+        req.sanitizeBody('database').escape();
+
+
+        sql.testConnection(req.body.host, req.body.user, req.body.password, req.body.host.database, function(error, success) {
+            res.json({
+                success: success,
+                error: error
+            });
+        });
     });
 
     return setupRoutes;

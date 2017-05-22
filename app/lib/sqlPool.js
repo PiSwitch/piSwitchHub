@@ -54,3 +54,23 @@ exports.isSetup = function () {
     var config = exports.getConfig();
     return config.host && config.user && config.password && config.database;
 };
+
+exports.testConnection = function(host, user, password, database, callback) {
+    var connection = mysql.createConnection({
+        host     : host,
+        user     : user,
+        password : password,
+        database : database
+    });
+
+    connection.connect();
+
+    connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+        if (error) {
+            return callback(error, false);
+        }
+        return callback(null, true)
+    });
+
+    connection.end();
+}
