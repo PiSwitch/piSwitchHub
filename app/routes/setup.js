@@ -111,6 +111,31 @@ module.exports = function (app) {
         res.redirect('/setup/enjoy');
     });
 
+    setupRoutes.post('/test_portal', function(req, res) {
+        req.sanitizeBody('serverUrl').trim();
+        req.sanitizeBody('apiUrl').trim();
+        req.sanitizeBody('email').trim();
+        req.sanitizeBody('password').trim();
+
+        req.sanitizeBody('email').escape();
+        req.sanitizeBody('password').escape();
+
+        var config = {
+            serverUrl: req.body.serverUrl,
+            apiUrl: req.body.apiUrl,
+            email: req.body.email,
+            password: req.body.password
+        };
+
+
+        masterServer.testConnection(req.body.serverUrl, req.body.apiUrl, req.body.email, req.body.password, function(error, success) {
+            res.json({
+                success: success,
+                errors: error
+            });
+        });
+    });
+
     setupRoutes.post('/test_sql', function(req, res) {
         req.sanitizeBody('host').trim();
         req.sanitizeBody('user').trim();
@@ -122,7 +147,7 @@ module.exports = function (app) {
         req.sanitizeBody('database').escape();
 
 
-        sql.testConnection(req.body.host, req.body.user, req.body.password, req.body.host.database, function(error, success) {
+        sql.testConnection(req.body.host, req.body.user, req.body.password, req.body.database, function(error, success) {
             res.json({
                 success: success,
                 error: error

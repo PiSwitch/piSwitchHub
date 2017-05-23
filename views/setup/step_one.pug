@@ -11,10 +11,10 @@ block content
 
     form(method='POST', action='')
         div
-            label(for='serverUrl') Remote Server Address
+            label(for='serverUrl') Portal Server Address
             input#serverUrl(name='serverUrl', value=(config === undefined ? 'http://example.org:3000/' : config.serverUrl))
         div
-            label(for='apiUrl') Remote API Url
+            label(for='apiUrl') Portal API Url
             input#apiUrl(name='apiUrl', value=(config === undefined ? 'http://example.org:3000/api/' : config.apiUrl))
         div
             label(for='email') Login Email
@@ -23,4 +23,6 @@ block content
             label(for='password') Password
             input#password(name='password', type='password')
         div
+            //- TODO: The test button should do an ajax request to the correct action
+            button(type='submit', disabled) Test connection
             button(type='submit') Next step

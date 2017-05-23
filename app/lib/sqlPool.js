@@ -73,4 +73,4 @@ exports.testConnection = function(host, user, password, database, callback) {
     });
 
     connection.end();
-}
+};

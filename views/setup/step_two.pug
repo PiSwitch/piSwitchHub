@@ -28,5 +28,6 @@ block content
             input#connectionLimit(name='connectionLimit', type='number', value=(config === undefined ? '10' : config.connectionLimit))
 
         div
+            //- TODO: The test button should do an ajax request to the correct action
             button(type='submit', disabled) Test connection
             button(type='submit') Next step

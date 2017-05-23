@@ -1,5 +1,6 @@
 var request = require('request');
 var masterServer = require('../models/masterServer');
+
 var exports = {};
 module.exports = exports;
 
